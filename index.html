@@ -7,6 +7,7 @@
 </head>
 <body>
     <div>
+        <div id="messages"></div>
         <form>
             <input type="text" id="m" placeholder="Message">
             <button>Envoyer</button>
@@ -24,6 +25,9 @@
       socket.emit('chat message', $('#m').val());
       $('#m').val('');
       return false;
+    });
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg));
     });
   });
 </script>
